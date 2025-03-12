@@ -1,0 +1,38 @@
+# GPT Language Model Configuration
+
+# Data configuration
+data:
+  input_file: "input.txt"
+  train_split: 0.9  # 90% for training, 10% for validation
+
+# Model architecture
+model:
+  block_size: 256  # maximum context length for predictions
+  n_embd: 384  # embedding dimension
+  n_head: 6  # number of attention heads
+  n_layer: 6  # number of transformer layers
+  dropout: 0.2  # dropout probability
+
+# Training parameters
+training:
+  seed: 1337  # random seed
+  batch_size: 64  # how many independent sequences will we process in parallel
+  max_iters: 5000  # total training iterations
+  eval_interval: 500  # evaluate loss every N iterations
+  eval_iters: 200  # number of iterations to estimate loss
+  learning_rate: 3.0e-4  # learning rate for optimizer
+  device: "mps"  # device to run on ("cuda", "cpu", or "mps")
+
+# Text generation settings
+generation:
+  sample_size: 500  # tokens to generate for sample
+  full_size: 10000  # tokens to generate for full output
+
+# MLflow tracking
+mlflow:
+  experiment_name: "gpt-language-model"
+
+# Output settings
+output:
+  dir: "outputs"  # directory for output files
+  save_model: false  # whether to save the model to MLflow
